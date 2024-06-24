@@ -6,24 +6,27 @@ namespace LibraManager.Domain.Entities
     {
         public const int MAX_GENRE_LENGTH = 100;
 
-        private Genre(int id, string name)
+        private Genre(string name)
         {
-            Id = id;
             Name = name;
         }
 
         public int Id { get; }
         public string Name { get; } = string.Empty;
-        public virtual ICollection<Book> Books { get; } = [];
 
-        public static Result<Genre> Create(int id, string name)
+        private readonly ICollection<Book> _books = [];
+        public IReadOnlyCollection<Book> BookList => _books.ToList();
+
+        public void AddBook(Book book) => _books.Add(book);
+
+        public static Result<Genre> Create(string name)
         {
             if(string.IsNullOrEmpty(name) || name.Length > MAX_GENRE_LENGTH)
             {
                 return Result.Failure<Genre>($"'{nameof(name)}' cannot be null or empty");
             }
 
-            var genre = new Genre(id, name);
+            var genre = new Genre(name);
 
             return Result.Success<Genre>(genre);
         }

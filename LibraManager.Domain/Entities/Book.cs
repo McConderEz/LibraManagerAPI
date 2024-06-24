@@ -13,23 +13,30 @@ namespace LibraManager.Domain.Entities
     {
         public const int MAX_TITLE_LENGTH = 350;
 
-        private Book(int id, string title, DateTime createdDate, int authorId)
+        private Book(string title, DateTime createdDate, int loanId)
         {
-            Id = id;
             Title = title;
             CreatedDate = createdDate;
-            AuthorId = authorId;
+            LoanId = loanId;
         }
 
         public int Id { get; }
         public string Title { get; } = string.Empty;
         public DateTime CreatedDate { get; }
 
-        public int AuthorId { get; }
-        public virtual Author? Author { get; }
-        public virtual ICollection<Genre> Genres { get; } = [];
+        public int LoanId { get; }
+        public virtual Loan? Loan { get; }
 
-        public static Result<Book> Create(int id, string title,  DateTime createdDate, int authorId)
+        private readonly ICollection<Author> _authors = [];
+        private readonly ICollection<Genre> _genres = [];
+
+        public IReadOnlyCollection<Author> AuthorList => _authors.ToList();
+        public IReadOnlyCollection<Genre> GenreList => _genres.ToList();
+
+        public void AddAuthor(Author author) => _authors.Add(author);
+        public void AddGenre(Genre genre) => _genres.Add(genre);
+
+        public static Result<Book> Create(string title,  DateTime createdDate, int loanId)
         {
             if (string.IsNullOrEmpty(title) || title.Length > MAX_TITLE_LENGTH)
             {
@@ -41,12 +48,7 @@ namespace LibraManager.Domain.Entities
                 return Result.Failure<Book>($"'{nameof(createdDate)}' cannot be more than DateTime.Now");
             }
 
-            if(authorId <= 0)
-            {
-                return Result.Failure<Book>($"'{nameof(authorId)}' cannot be less than 1");
-            }
-
-            var book = new Book(id, title, createdDate, authorId);
+            var book = new Book(title, createdDate, loanId);
 
             return Result.Success<Book>(book);
         }
