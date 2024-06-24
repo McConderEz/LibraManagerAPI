@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35005.142
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraManager.API", "LibraManager.API\LibraManager.API.csproj", "{CC48262E-6272-4F87-A3BF-76D7021C3C2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraManager.API", "LibraManager.API\LibraManager.API.csproj", "{CC48262E-6272-4F87-A3BF-76D7021C3C2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraManager.Domain", "LibraManager.Domain\LibraManager.Domain.csproj", "{68B2C0B1-6030-4463-9C4C-71CE2923F526}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraManager.DAL", "LibraManager.DAL\LibraManager.DAL.csproj", "{BAC09816-D2A8-4517-A0C8-22E935F649A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{CC48262E-6272-4F87-A3BF-76D7021C3C2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC48262E-6272-4F87-A3BF-76D7021C3C2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC48262E-6272-4F87-A3BF-76D7021C3C2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68B2C0B1-6030-4463-9C4C-71CE2923F526}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68B2C0B1-6030-4463-9C4C-71CE2923F526}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68B2C0B1-6030-4463-9C4C-71CE2923F526}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68B2C0B1-6030-4463-9C4C-71CE2923F526}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAC09816-D2A8-4517-A0C8-22E935F649A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAC09816-D2A8-4517-A0C8-22E935F649A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAC09816-D2A8-4517-A0C8-22E935F649A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAC09816-D2A8-4517-A0C8-22E935F649A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
